@@ -47,6 +47,8 @@ const CLASS_LIMIT = 5;
 
 let foto;
 
+let UsoEtiqueta = "vacio";
+let Ultimoacorde = [];
 let Etiqueta;
 let modelo;
 let knn;
@@ -169,12 +171,13 @@ function captura(nombre) {
             </div>
         </div>
         `
+        //Crea las nuevas clases de objetos
+        newDatos = new DatosCaptura(nombre, CambiarTonalidad(nombre), CambiarGrado(nombre), CambiarModo(nombre));
 
-        //Nueva clase que se creay se almacena en la base de datos
-        NuevaEtiqueta = new Etiquetas(nombre, CambiarTonalidad(nombre), CambiarGrado(nombre), CambiarModo(nombre));
-        //console.log(NuevaEtiqueta);
-        agregar();
+        //Almacena el nuevo objeto en el array
+        AddDatos();
 
+        CapturaDatos(); //Envia a notas.js los datos capturados en "Basedatos[]"
 
 
         //Elimina los select
@@ -268,11 +271,20 @@ function clasificar() {
 
                 updateBar(result);
                 for (let i = 0; i < mensajeNota.length; i++) {
-                    if (mensajeNota[i].name === Etiqueta && notePlay[i] === false) {
-                        console.log("On:" + i);
-                        notePlay[i] = true;
+                    if (mensajeNota[i].nombre == Etiqueta) {
+                        if (UsoEtiqueta != Etiqueta) {
+                            UsoEtiqueta = mensajeNota[i].nombre;
+                            MensajeOFF(Ultimoacorde);
+                            Ultimoacorde = mensajeNota[i].acorde;
+                            console.log(Ultimoacorde);
+                            MensajeON(Ultimoacorde);
+                            console.log("si");
+                        } else {
+                            console.log("no");
+                        }
                     }
                 }
+
             }
         });
     }
@@ -283,11 +295,17 @@ function clasificar() {
 function RefreshNeurona() {
     console.log("Borrado HTML");
 
+     //MensajeOff MIDI
+     MensajeOFF(Ultimoacorde);
+
     //Vaciado Array
     Basedatos = [];
     mensajeNota = [];
     clases = [];
+    Ultimoacorde = [];
 
+    UsoEtiqueta = "vacio";
+   
     clase = document.getElementById('clases');
     clase.innerHTML = ``; //Elimina El HTML
 
@@ -366,14 +384,15 @@ function windowResized() {
 }
 
 
-//Almacena las nuevas clases creadas como objetos en Basedatos[]
-function agregar() {
-    console.log("capturado");
-    Basedatos.push(NuevaEtiqueta);
+
+//Crea el objeto y lo guarda en "Basedatos[]"
+function AddDatos() {
+    Basedatos.push(newDatos);
+    console.log(Basedatos);
 }
 
-//Creacion de la clase 
-function Etiquetas(nombre, tonalidad, grado, modo) {
+
+function DatosCaptura(nombre, tonalidad, grado, modo) {
     this.nombre = nombre;
     this.tonalidad = tonalidad;
     this.grado = grado;

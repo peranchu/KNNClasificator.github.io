@@ -55,8 +55,15 @@ function displayDevices(){
 
 
 //Envía el mensaje MIDI por el puerto de salida
-function Mensaje(pitch){
+function MensajeON(pitch){
     device = midiOut[SelOUT.selectedIndex];
 
     device.playNote(pitch, "all", {velocity:100});
+}
+
+//Envía el mensaje MIDI por el puerto de salida
+function MensajeOFF(pitch){
+    device = midiOut[SelOUT.selectedIndex];
+
+    device.playNote(pitch, "all", {velocity:0});
 }

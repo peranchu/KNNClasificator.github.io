@@ -45,8 +45,10 @@ let grado;
 let mensajeNota = [];
 
 
-//Llamada desde el boton de captura crea desde las etiquetas de las clases, las clases MIDI
+//crea desde las etiquetas del objeto, las clases MIDI
 function CapturaDatos() {
+    mensajeNota = [];
+    
     for (let i = 0; i < Basedatos.length; i++) {
         //console.log(Basedatos);
         name = Basedatos[i].nombre;
@@ -56,7 +58,7 @@ function CapturaDatos() {
 
         //Comprueba los campos para crear las clases MIDI
         Comprobacion(name, tono, grado, modo);
-        
+
     }
 }
 
@@ -66,18 +68,18 @@ function Comprobacion(name, tono, grado, modo) {
     //CM
     if (tono === "C" && grado === "I" && modo === "Mayor") { //CM
         //console.log("CM");
-        nuevoMensaje = new Mensajes(name, CM);
-        addMensaje(name);
+        newMIDI = new MensajeMIDI(name, CM);
+        addMensaje();
     }
     if (tono === "C" && grado === "IV" && modo === "Mayor") { //DM
         //console.log("FM");
-        nuevoMensaje = new Mensajes(name, FM);
-        addMensaje(name);
+        newMIDI = new MensajeMIDI(name, FM);
+        addMensaje();
     }
     if (tono === "C" && grado === "V" && modo === "Mayor") { //DM
         //console.log("GM");
-        nuevoMensaje = new Mensajes(name, GM);
-        addMensaje(name);
+        newMIDI = new MensajeMIDI(name, GM);
+        addMensaje();
     }
 
     //==================  C MENOR ===============================
@@ -284,14 +286,13 @@ function Comprobacion(name, tono, grado, modo) {
 
 
 //Agregar Mensajes MIDI al array "mensajeNota []"
-function addMensaje(nombre) {
-   
-    mensajeNota.push(nuevoMensaje);
+function addMensaje() {
+    mensajeNota.push(newMIDI);
     console.log(mensajeNota);
 }
 
-//Clase Mensajes MIDI
-function Mensajes(name, modo) {
-    this.name = name;
-    this.modo = modo;
+//Crea las nuevas clases de los mensajes MIDI
+function MensajeMIDI(nombre, acorde) {
+    this.nombre = nombre;
+    this.acorde = acorde;
 }
