@@ -96,6 +96,7 @@ function addClase(nombre) {
                             <option value="2">F</option>
                             <option value="3">G</option>
                             <option value="4">A</option>
+                            <option value="5">NULL</option>
                         </select>
                     </div>
 
@@ -106,6 +107,7 @@ function addClase(nombre) {
                             <option value="1">I</option>
                             <option value="1">IV</option>
                             <option value="2">V</option>
+                            <option value="3">NULL</option>
                         </select>
                     </div>
                     
@@ -116,6 +118,7 @@ function addClase(nombre) {
                             <option value="1">Mayor</option>
                             <option value="2">menor</option>
                             <option value="3">7ª</option>
+                            <option value="4">NULL</option>
                         </select>
                     </div>      
                 </div> 
@@ -279,9 +282,7 @@ function clasificar() {
                             console.log(Ultimoacorde);
                             MensajeON(Ultimoacorde);
                             console.log("si");
-                        } else {
-                            console.log("no");
-                        }
+                        } 
                     }
                 }
 
