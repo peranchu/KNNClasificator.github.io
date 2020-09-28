@@ -273,15 +273,17 @@ function clasificar() {
                 CartaMensaje.innerHTML = Etiqueta + " - " + Confianza + "%";
 
                 updateBar(result);
+                
+                //Activa la secuencia armónica según la etiqueta detectada
                 for (let i = 0; i < mensajeNota.length; i++) {
                     if (mensajeNota[i].nombre == Etiqueta) {
                         if (UsoEtiqueta != Etiqueta) {
                             UsoEtiqueta = mensajeNota[i].nombre;
                             MensajeOFF(Ultimoacorde);
                             Ultimoacorde = mensajeNota[i].acorde;
-                            console.log(Ultimoacorde);
+                            //console.log(Ultimoacorde);
                             MensajeON(Ultimoacorde);
-                            console.log("si");
+                            //console.log("si");
                         } 
                     }
                 }

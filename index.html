@@ -36,19 +36,7 @@
                     <div class="card-content white-text">
                         <span class="card-title">Demo Clasificador de Imagenes de ALSW</span>
                         <p>Neurona clasificadora de imagenes implementa en ML5, que puede ser entrenada desde el
-                            navegador Web usando el Adgoritmo de KNN o K vecinos mas sercados</p>
-                        <p>Ver tutorial completo para explicacion del codigo y como unir con Arduino por USB o IOT MQTT
-                        </p>
-                    </div>
-                    <div class="card-action  teal darken-4">
-                        <a class="white-text"
-                            href="https://nocheprogramacion.com/Cursos/07_Inteligencia_Artificial_ML5/">Curso en
-                            Proyecto</a>
-                        <a class="white-text" href="https://github.com/alswnet/DemoML5">Codigo Github</a>
-                        <a class="white-text"
-                            href="https://www.youtube.com/playlist?list=PLWQQswW6kqpUFsEd8jXxVCNDvHN34uR24">Youtube
-                            PlayList</a>
-                        <a class="white-text" href="#">Donar</a>
+                            navegador Web usando el Adgoritmo KNN de clasificación</p>
                     </div>
                 </div>
             </div>
@@ -76,12 +64,15 @@
                         </div>
 
                         <!--Botones-->
-                        <a id="addClass" class="btn-floating btn-large waves-effect waves-light red"><i
+                        <a id="addClass" class="btn-floating btn-large waves-effect deep-orange"><i
                                 class="material-icons" title="Añadir">add</i></a>
                         <a id="refresh" class="btn-floating btn-large waves-effect waves-light light-green"><i
                                 class="material-icons" title="Refresh" onclick="RefreshNeurona()">autorenew</i></a>
-                        <a id="cargar" class="btn-floating btn-large waves-effect waves-light purple lighten-3"><i
-                                class="material-icons" title="Cargar">music_note</i></a>
+                        <a id="Encendido" class="btn-floating btn-large waves-effect waves-light purple lighten-3"><i
+                                class="material-icons" title="Conectar MIDI" onclick="conectar()">music_note</i></a>
+                        <a id="Apagado" class="btn-floating btn-large waves-effect waves-light red"><i
+                            class="material-icons" title="Apagar MIDI" onclick="desconectar()">do_not_disturb</i></a> 
+
 
                         <!--Clases-->
                         <div id="clases"></div>
@@ -92,7 +83,7 @@
                 <!--Panel vídeo-->
                 <div id="captura"></div>
 
-                <div class="col s6 teal darken-1 center-align">
+                <div class="col s6 orange lighten-4 center-align">
                     <div id="Estado" class="card-panel orange lighten-1 center-align">
                         <span id="CartaMensaje" class="card-title white-text">Cargando...</span>
                     </div>
@@ -107,13 +98,19 @@
         <!--MIDI-->
         <div class="row">
             <div class="col s4">
-                <label>MIDI OUT</label>
-                <select id="SelOUT" class="browser-default">
-                    <option value="" disabled selected>Salida MIDI</option>
-                </select>
+                <div class="card-panel red lighten-3">
+                    <label class="black-text">MIDI OUT</label>
+                    <select id="SelOUT" class="browser-default">
+                        <option id="predefinido" value="" disabled selected>Salida MIDI</option>
+                    </select>
+                </div>
             </div>
         </div>
-        
+
+
+
+
+
 
 
         <!--Footer-->
@@ -121,17 +118,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
-                        <h5 class="white-text">ALSW</h5>
-                        <p class="grey-text text-lighten-4">Somos un grupo de emprendedores makers, nos apasiona la
-                            tecnologia, no solo conocer de ella, sino que tambien desarrollarla, estudiarla, modificarla
-                            y crearla.</p>
+                        <h5 class="white-text">ArtTec</h5>
+                        <p class="grey-text text-lighten-4">Diseño en Arte y Electrónica.
+                        </p>
                     </div>
                     <div class="col l4 offset-l2 s12">
                         <h5 class="white-text">Link</h5>
                         <ul>
                             <li><a class="grey-text text-lighten-3" href="https://www.youtube.com/alswnet">Youtube</a>
                             </li>
-                            <li><a class="grey-text text-lighten-3" href="https://discord.gg/tECqBm">Discord </a></li>
+                            <li><a class="grey-text text-lighten-3" href="https://discord.gg/tECqBm">Discord </a>
+                            </li>
                             <li><a class="grey-text text-lighten-3"
                                     href="https://github.com/alswnet/DemoML5/issues">Reportar Bug</a>
                             <li><a class="grey-text text-lighten-3" href="https://github.com/alswnet/DemoML5">Codigo
@@ -145,8 +142,9 @@
             </div>
             <div class="footer-copyright teal darken-3">
                 <div class="container">
-                    Por ChepeCarlos de ALSW
-                    <a class="grey-text text-lighten-4 right" href="https://chepecarlos.com/">Chepecarlos.com</a>
+                    Por Honorino García
+                    <a class="grey-text text-lighten-4 right"
+                        href="https://chepecarlos.com/">artetecnologia.artec@gmail.com</a>
                 </div>
             </div>
         </footer>
